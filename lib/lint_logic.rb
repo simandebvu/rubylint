@@ -1,30 +1,30 @@
-class LintLogic
+module LintLogic
   attr_accessor :errors_found
-
-  @errors_found = nil
-
-  def initialize
-    @errors_found = {}
-  end
 
   def check_line_length(content)
     content.each_with_index do |string_scan, index|
-      line = string_scan.string.strip!
-      next if line.nil? || string_scan.nil?
-
-      @errors_found['Line length'] = index if line.length > 80
+      # p "1. START LINE"
+      # p string_scan
+      has_text = string_scan.scan_until(/\w+/)
+      # p "Has Test"
+      next if has_text.nil?
+      # p has_text
+      line = string_scan.string()
+      # p line.length #BHOOO
+      log_error('Line length', index) if line.length > 80
+      # p "LOOP CLOSES."
     end
-    @errors_found
+    # p "CONTENT END."
+    # puts "Line Check Scan Complete"
   end
 
   def check_termination(content)
     filter_criteria = ["Unnecessary character ';'"]
     content.each_with_index do |string_scan, index|
-      next if string_scan.nil?
-
-      @errors_found[index] = "Unnecessary character ';'" if string_scan.exist?(/;/)
+      next if string_scan.nil? || !string_scan.exist?(/;/)
+      @errors_found[index] = "Unnecessary character ';'" 
     end
-    @errors_found.select { |_k, v| filter_criteria.include?(v) }
+    @errors_found.select { |_k, v| filter_criteria.include?(v) } unless !flagged
   end
 
   def check_row_spacing(content)

@@ -4,12 +4,15 @@ require_relative '../lib/filereader.rb'
 require_relative '../lib/lint_logic.rb'
 
 describe LintLogic do
-  let(:logic_class) { LintLogic.new }
+  include LintLogic
+  let(:control_file) { 'spec/spec_tests/control_class.rb' }
+  let(:control_file_buffer) { FileReader.new(control_file) }
+
   describe '#check_line_length' do
     let(:test_file) { 'spec/spec_tests/line_length.rb' }
     let(:file_buffer) { FileReader.new(test_file) }
     it 'Must advise user on long lines greater than 80.' do
-      expect(logic_class.check_line_length(file_buffer.file_contents)).to eql({ 'Line length' => 2 })
+      expect(check_line_length(file_buffer.file_contents)).to output('Line length error. Line : 2.')
     end
   end
 
@@ -17,7 +20,11 @@ describe LintLogic do
     let(:test_file) { 'spec/spec_tests/termination.rb' }
     let(:file_buffer) { FileReader.new(test_file) }
     it 'Must advise user on unnecessary termination colon.' do
-      expect(logic_class.check_termination(file_buffer.file_contents)).to eql({ 0 => "Unnecessary character ';'" })
+      expect(check_termination(file_buffer.file_contents)).to eql({ 0 => "Unnecessary character ';'" })
+    end
+
+    it 'Must work normally if no errors.' do
+        expect(logic_class.check_termination(control_file_buffer.file_contents)).to eql({ 0 => "Unnecessary character ';'" })
     end
   end
 
