@@ -37,6 +37,17 @@ class LintLogic
         return $errors_found.select{|k, v| filter_criteria.include?(v) }
     end
 
+    def check_num_classes(content)
+        class_count = 0
+        content.each_with_index do |stringScan,idx| 
+            next if stringScan.nil?
+            m = stringScan.exist?(/class/)
+            class_count += 1 unless m.nil?
+        end
+        p "Aim to have just a single class/module per source file."
+    end
+
+    
     
     def log_error(type, line)
         puts "#{type} error. Line : #{line}."
