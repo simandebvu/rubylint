@@ -2,6 +2,10 @@ AllCops:
   Exclude:
     - "Guardfile"
     - "Rakefile"
+    - 'spec/spec_tests/spaces.rb'
+    - 'spec/spec_tests/termination.rb'
+    - 'spec/spec_tests/line_length.rb'
+    - 'spec/spec_tests/many_classes.rb'
 
   DisplayCopNames: true
 
