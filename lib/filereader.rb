@@ -16,6 +16,3 @@ class FileReader
     file_
   end
 end
-
-# f = FileReader.new("lint_logic.rb")
-# p f.file_contents
