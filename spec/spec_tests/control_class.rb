@@ -1,5 +1,3 @@
-class ControlClass
-    def initialize
-        puts "Well nothing wrong here!"
-    end
+def control_method
+  puts "Well nothing wrong here!"
 end

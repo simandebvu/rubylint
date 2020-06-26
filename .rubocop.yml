@@ -6,6 +6,7 @@ AllCops:
     - 'spec/spec_tests/termination.rb'
     - 'spec/spec_tests/line_length.rb'
     - 'spec/spec_tests/many_classes.rb'
+    - 'spec/spec_tests/indentation.rb'
     - 'spec/spec_tests/control_class.rb'
 
   DisplayCopNames: true

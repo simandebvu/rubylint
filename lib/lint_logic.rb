@@ -1,3 +1,5 @@
+require_relative 'string.rb'
+
 module LintLogic
   attr_accessor :errors_found
 
@@ -47,9 +49,19 @@ module LintLogic
     end
   end
 
+  def check_indentation(content)
+    content.each_with_index do |string_scan, index|
+      string_scan.reset
+      spaces = string_scan.scan(/\s+/)
+      next if spaces.nil?
+
+      log_error('Indentation ', index) if spaces.length > 2
+    end
+  end
+
   private
 
   def log_error(type, line)
-    puts "#{type} error. Line : #{line}."
+    puts "#{type} error. Line : #{line}.".red
   end
 end

@@ -55,4 +55,16 @@ describe LintLogic do
       expect { check_num_classes(control_file_buffer.file_contents) }.to output('').to_stdout
     end
   end
+
+  describe '#check_indentation' do
+    let(:test_file) { 'spec/spec_tests/indentation.rb' }
+    let(:file_buffer) { FileReader.new(test_file) }
+    it 'Must alert user of invalid indentation.' do
+      expect { check_indentation(file_buffer.file_contents) }.to output(puts('Indentation  error. Line : 2.')).to_stdout
+    end
+
+    it 'Must work normally if no errors.' do
+      expect { check_indentation(control_file_buffer.file_contents) }.to output('').to_stdout
+    end
+  end
 end
