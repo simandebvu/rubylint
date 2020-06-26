@@ -1,0 +1,21 @@
+require 'strscan'
+class FileReader
+  attr_accessor :file, :num_lines, :file_contents
+  def initialize(file)
+    @file = file
+    @file_contents = read_file
+    @num_lines = @file_contents.size
+  end
+
+  private
+
+  def read_file
+    file_ = nil
+    File.open(@file, 'r') { |n| file_ = n.readlines }
+    file_.map! { |s| StringScanner.new(s) }
+    file_
+  end
+end
+
+# f = FileReader.new("lint_logic.rb")
+# p f.file_contents
