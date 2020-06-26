@@ -6,9 +6,9 @@ class RubyLint
   include LintLogic
 
   @file_buffer = nil
-  
+
   def initialize(file_path)
-    puts "Welcome to Ruby Lint!"
+    puts 'Welcome to Ruby Lint!'
     @file_path = file_path
     @file_buffer = FileReader.new(@file_path)
     check_line_length(@file_buffer.file_contents)
@@ -18,11 +18,10 @@ class RubyLint
     show_errors(@errors_found) unless @errors_found.size <= 0
   end
 
-  def show_errors(errors_hash)
-    puts "Errors Listing"
+  def show_errors(_errors_hash)
+    puts 'Errors Listing'
   end
-
 end
 
 file_path = ARGV.shift
-main = RubyLint.new(file_path) unless file_path.nil?
+RubyLint.new(file_path) unless file_path.nil?

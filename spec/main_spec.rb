@@ -12,7 +12,11 @@ describe LintLogic do
     let(:test_file) { 'spec/spec_tests/line_length.rb' }
     let(:file_buffer) { FileReader.new(test_file) }
     it 'Must advise user on long lines greater than 80.' do
-      expect(check_line_length(file_buffer.file_contents)).to output('Line length error. Line : 2.')
+      expect { check_line_length(file_buffer.file_contents) }.to output(puts('Line length error. Line : 2.')).to_stdout
+    end
+
+    it 'Must work normally if no errors.' do
+      expect { check_line_length(control_file_buffer.file_contents) }.to output('').to_stdout
     end
   end
 
@@ -20,19 +24,23 @@ describe LintLogic do
     let(:test_file) { 'spec/spec_tests/termination.rb' }
     let(:file_buffer) { FileReader.new(test_file) }
     it 'Must advise user on unnecessary termination colon.' do
-      expect(check_termination(file_buffer.file_contents)).to eql({ 0 => "Unnecessary character ';'" })
+      expect { check_termination(file_buffer.file_contents) }.to output(puts("Unnecessary character ';' error. Line : 1.")).to_stdout
     end
 
     it 'Must work normally if no errors.' do
-        expect(logic_class.check_termination(control_file_buffer.file_contents)).to eql({ 0 => "Unnecessary character ';'" })
+      expect { check_termination(control_file_buffer.file_contents) }.to output('').to_stdout
     end
   end
 
   describe '#check_row_spacing' do
     let(:test_file) { 'spec/spec_tests/spaces.rb' }
     let(:file_buffer) { FileReader.new(test_file) }
-    it 'Must check spaces around operators.' do
-      expect(logic_class.check_row_spacing(file_buffer.file_contents)).to eql({ 4 => 'Two or more empty lines' })
+    it 'Must check spacing between elements.' do
+      expect { check_row_spacing(file_buffer.file_contents) }.to output(puts('Two or more empty lines error. Line : 5.')).to_stdout
+    end
+
+    it 'Must work normally if no errors.' do
+      expect { check_row_spacing(control_file_buffer.file_contents) }.to output('').to_stdout
     end
   end
 
@@ -40,7 +48,11 @@ describe LintLogic do
     let(:test_file) { 'spec/spec_tests/many_classes.rb' }
     let(:file_buffer) { FileReader.new(test_file) }
     it 'Must alert user of more than 1 class.' do
-      expect(logic_class.check_num_classes(file_buffer.file_contents)).to eql({ 'classes' => 'Too many classes.' })
+      expect { check_num_classes(file_buffer.file_contents) }.to output(puts('Classes  error. Line : <Whole File>.')).to_stdout
+    end
+
+    it 'Must work normally if no errors.' do
+      expect { check_num_classes(control_file_buffer.file_contents) }.to output('').to_stdout
     end
   end
 end
