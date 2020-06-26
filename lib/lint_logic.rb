@@ -41,7 +41,7 @@ module LintLogic
     class_count = 0
     content.each_with_index do |string_scan, index|
       string_scan.reset
-      m = string_scan.match?('class')
+      m = string_scan.match?(/class/)
       next if m.nil?
 
       class_count += 1
