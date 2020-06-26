@@ -48,7 +48,7 @@ describe LintLogic do
     let(:test_file) { 'spec/spec_tests/many_classes.rb' }
     let(:file_buffer) { FileReader.new(test_file) }
     it 'Must alert user of more than 1 class.' do
-      expect { check_num_classes(file_buffer.file_contents) }.to output(puts('Classes  error. Line : <Whole File>.')).to_stdout
+      expect { check_num_classes(file_buffer.file_contents) }.to output(puts('Classes  error. Line : 0.')).to_stdout
     end
 
     it 'Must work normally if no errors.' do

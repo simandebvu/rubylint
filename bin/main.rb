@@ -11,15 +11,12 @@ class RubyLint
     puts 'Welcome to Ruby Lint!'
     @file_path = file_path
     @file_buffer = FileReader.new(@file_path)
+    lines = @file_buffer.file_contents.length
+    puts "Scanned #{lines} lines in the file."
     check_line_length(@file_buffer.file_contents)
     check_termination(@file_buffer.file_contents)
     check_row_spacing(@file_buffer.file_contents)
     check_num_classes(@file_buffer.file_contents)
-    show_errors(@errors_found) unless @errors_found.size <= 0
-  end
-
-  def show_errors(_errors_hash)
-    puts 'Errors Listing'
   end
 end
 
