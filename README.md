@@ -3,6 +3,9 @@
 - [Rubylint](#rubylint)
     - [About RubyLint](#about-rubylint)
   - [How to use](#how-to-use)
+
+  - [Rules](#rules)
+
   - [Usage](#usage)
     - [Built With](#built-with)
   - [Video Presentation](#video-presentation)
@@ -20,6 +23,7 @@
 - Delivers early feedback for Ruby Developers
 - Provides best practices and advices
 
+
 ## How to use 
 
 1. Open the directory where the application is.
@@ -28,6 +32,67 @@
 
 ![Demo](images/RubyLint.gif)
 
+
+## Rules
+
+**Indentation**
+* 2 space indentation rule
+
+bad code:
+```ruby
+# bad - four spaces
+def some_method
+    do_something
+end
+
+```
+
+good code:
+```ruby
+# good
+def some_method
+  do_something
+end
+```
+
+**Maximum line length**
+* Limit lines to 80 characters.
+
+**Termination**
+* 2 space indentation rule
+
+bad code:
+```ruby
+# bad
+puts 'foobar'; # superfluous semicolon
+
+```
+
+good code:
+```ruby
+# good
+puts 'foobar'
+```
+**Two or More Empty Lines**
+* Don’t use several empty lines in a row.
+  
+bad code:
+```ruby
+# bad - It has two empty lines.
+some_method
+
+
+some_method
+
+```
+ 
+good code:
+```ruby
+# good
+some_method
+
+some_method
+```
 
 ## Usage
 
@@ -55,6 +120,14 @@ To test out **Rubylint** you need to:
 ```
 $ ruby bin/main path_to_file.rb (path_to_file being the file you want to check for linters)
 ```
+![Screenshot](images/code_demo.png)
+
+
+**Automated Test**
+* Run the command and see the output
+```
+$ bundle exec rspec
+```
 ![Screenshot](images/rspec.png)
 
 ### Built With
@@ -62,7 +135,7 @@ This project was built using these technologies.
 * Ruby
 * Rspec
 * Rubocop
-* VSCode :vscode:
+* VSCode
 
 ## Video Presentation
 
