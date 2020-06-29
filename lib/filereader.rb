@@ -16,4 +16,3 @@ class FileReader
     file_
   end
 end
-
