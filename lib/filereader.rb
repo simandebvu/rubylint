@@ -1,6 +1,6 @@
 require 'strscan'
 class FileReader
-  attr_accessor :file, :num_lines, :file_contents
+  attr_reader :file_contents
   def initialize(file)
     @file = file
     @file_contents = read_file
@@ -17,5 +17,3 @@ class FileReader
   end
 end
 
-# f = FileReader.new("lint_logic.rb")
-# p f.file_contents
