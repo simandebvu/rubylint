@@ -23,7 +23,7 @@
 ## How to use 
 
 1. Open the directory where the application is.
-2. In bash/terminal type `ruby bin/main.rb <full-path-to-ruby-file>` as below.
+2. In bash/terminal type `ruby bin/main.rb <full-path-to-ruby-file-to-check>` as below.
 
 
 ![Demo](images/RubyLint.gif)
@@ -79,6 +79,7 @@ Check out full presentation [here]([#](https://www.loom.com/share/9053a51437b84e
 
 - LinkedIn: [simandebvu](https://www.linkedin.com/in/simandebvu/)
 - GitHub: [@simandebvu](https://github.com/simandebvu)
+- Twitter: [@simandebvu](https://twitter.com/simandebvu)
 
 
 ## :handshake: Contributing
