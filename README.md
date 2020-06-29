@@ -2,7 +2,10 @@
 
 - [Rubylint](#rubylint)
     - [About RubyLint](#about-rubylint)
+  - [How to use](#how-to-use)
+
   - [Rules](#rules)
+
   - [Usage](#usage)
     - [Built With](#built-with)
   - [Video Presentation](#video-presentation)
@@ -19,6 +22,16 @@
 - Checks compliance
 - Delivers early feedback for Ruby Developers
 - Provides best practices and advices
+
+
+## How to use 
+
+1. Open the directory where the application is.
+2. In bash/terminal type `ruby bin/main.rb <full-path-to-ruby-file-to-check>` as below.
+
+
+![Demo](images/RubyLint.gif)
+
 
 ## Rules
 
@@ -80,6 +93,7 @@ some_method
 
 some_method
 ```
+
 ## Usage
 
 The **_Rubylint_** does basic syntax checking, as well as applying a set of rules to the code and throws back an error if bad syntax is found. Inspired by the ruby style guide.
@@ -104,7 +118,7 @@ To test out **Rubylint** you need to:
   ```
 * Navigate to root directory of the repo and run:
 ```
-$ bin/main path_to_file.rb (path_to_file being the file you want to check for linters)
+$ ruby bin/main path_to_file.rb (path_to_file being the file you want to check for linters)
 ```
 ![Screenshot](images/code_demo.png)
 
