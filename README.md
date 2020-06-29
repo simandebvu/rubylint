@@ -2,6 +2,7 @@
 
 - [Rubylint](#rubylint)
     - [About RubyLint](#about-rubylint)
+  - [How to use](#how-to-use)
   - [Usage](#usage)
     - [Built With](#built-with)
   - [Video Presentation](#video-presentation)
@@ -18,6 +19,15 @@
 - Checks compliance
 - Delivers early feedback for Ruby Developers
 - Provides best practices and advices
+
+## How to use 
+
+1. Open the directory where the application is.
+2. In bash/terminal type `ruby bin/main.rb <full-path-to-ruby-file>` as below.
+
+
+![Demo](images/RubyLint.gif)
+
 
 ## Usage
 
@@ -43,7 +53,7 @@ To test out **Rubylint** you need to:
   ```
 * Navigate to root directory of the repo and run:
 ```
-$ bin/main path_to_file.rb (path_to_file being the file you want to check for linters)
+$ ruby bin/main path_to_file.rb (path_to_file being the file you want to check for linters)
 ```
 ![Screenshot](images/rspec.png)
 
@@ -56,7 +66,7 @@ This project was built using these technologies.
 
 ## Video Presentation
 
-Check out full presentation [here](#)
+Check out full presentation [here]([#](https://www.loom.com/share/9053a51437b84e5ab9ba49fde4735549))
 
 ## Potential future features
 
